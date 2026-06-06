@@ -1,0 +1,196 @@
+[gd_scene format=3 uid="uid://pd5j77iq4tuv"]
+
+[ext_resource type="Script" uid="uid://cf75hggv883wk" path="res://scripts/main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://cc0wts5o7nbk7" path="res://assets/sprites/background-black.png" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://2xtfitohcns1" path="res://assets/sprites/pixel_ship_yellow.png" id="4_jix8l"]
+[ext_resource type="AudioStream" uid="uid://m5rscexfiqp5" path="res://assets/sound/serhii_kliets-spaceship-arcade-shooter-game-background-soundtrack-318508.mp3" id="5_glbon"]
+[ext_resource type="Script" uid="uid://detmpxygjo7ia" path="res://scripts/audio_control.gd" id="5_nlkkf"]
+[ext_resource type="FontFile" uid="uid://blhxalj2sxgra" path="res://assets/fonts/Pixellari.ttf" id="6_qe12f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
+texture = ExtResource("3_jix8l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glbon"]
+texture = ExtResource("3_jix8l")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nlkkf"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qe12f"]
+color = Color(0, 0, 1, 1)
+thickness = 5
+
+[node name="MainMenu" type="Control" unique_id=1170012449]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="BackgroundPanel1" type="Panel" parent="." unique_id=1735125101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jix8l")
+
+[node name="BackgroundPanel2" type="Panel" parent="." unique_id=2126241632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 376.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jix8l")
+
+[node name="GameTitle" type="Label" parent="." unique_id=682695056]
+z_index = 20
+layout_mode = 0
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 391.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 70
+text = "Space Wars"
+
+[node name="PixelShipYellow" type="Sprite2D" parent="." unique_id=1414191418]
+position = Vector2(200, 520)
+texture = ExtResource("4_jix8l")
+
+[node name="MainButtons" type="VBoxContainer" parent="." unique_id=492136204]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -44.0
+offset_right = 128.0
+offset_bottom = 150.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="MainButtons" unique_id=1399562350]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="SettingButton" type="Button" parent="MainButtons" unique_id=1326562155]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MainButtons" unique_id=1301331690]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="SettingsPanel" type="Panel" parent="." unique_id=1297704856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -76.0
+offset_right = 200.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_glbon")
+
+[node name="Label" type="Label" parent="SettingsPanel" unique_id=1621516539]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="SettingsPanel" unique_id=1406665938]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -72.0
+offset_right = -64.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_qe12f")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=997388441]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -88.0
+offset_right = 73.230774
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer" unique_id=484306743]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1527305373]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qe12f")
+text = "Music"
+
+[node name="AudioControl" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1282511148]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_nlkkf")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qe12f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qe12f")
+max_value = 1.0
+step = 0.02
+value = 1.0
+script = ExtResource("5_nlkkf")
+audio_bus_name = "Music"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=322179115]
+stream = ExtResource("5_glbon")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtons/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="MainButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="SettingsPanel/VBoxContainer/HBoxContainer/AudioControl" to="SettingsPanel/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]

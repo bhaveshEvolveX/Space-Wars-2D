@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://l7gmftpldu85"]
+
+[ext_resource type="Texture2D" uid="uid://c4qks6md2nybs" path="res://assets/sprites/ship_yellow_stroked.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bso8yc71on1h2" path="res://entities/player/player.gd" id="1_abrql"]
+
+[node name="Player" type="Node2D" unique_id=1289316115]
+script = ExtResource("1_abrql")
+
+[node name="SpaceshipYellow" type="Sprite2D" parent="." unique_id=968090264]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4flbx")

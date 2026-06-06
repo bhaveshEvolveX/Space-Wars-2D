@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://02q8xqqosy6k"]
+
+[ext_resource type="Script" uid="uid://7hndli7jnpf0" path="res://scripts/game_manager.gd" id="1_frtjd"]
+[ext_resource type="Texture2D" uid="uid://cc0wts5o7nbk7" path="res://assets/sprites/background-black.png" id="2_0rse5"]
+[ext_resource type="PackedScene" uid="uid://l7gmftpldu85" path="res://entities/player/player.tscn" id="3_aonbx"]
+[ext_resource type="Texture2D" uid="uid://8xm0bg8wwhxn" path="res://assets/sprites/horizontal_bar_yellow.png" id="4_lcbjr"]
+[ext_resource type="PackedScene" uid="uid://bh8fif7plv85w" path="res://entities/enemy_spawner/enemy_spawner.tscn" id="5_30v7y"]
+[ext_resource type="Script" uid="uid://h0dhwcy52qs" path="res://entities/enemy_spawner/enemy_spawner.gd" id="6_5xtl8"]
+[ext_resource type="FontFile" uid="uid://blhxalj2sxgra" path="res://assets/fonts/Pixellari.ttf" id="7_cjvif"]
+[ext_resource type="Script" uid="uid://bnjhog41u5ma4" path="res://scripts/sfx_control.gd" id="8_ry0e6"]
+[ext_resource type="AudioStream" uid="uid://nhyhpjeqqjgk" path="res://assets/sound/ExplosionSound.wav" id="9_pc0jn"]
+[ext_resource type="AudioStream" uid="uid://clplywvuuawu1" path="res://assets/sound/ShootSound.wav" id="10_c7a3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smx3j"]
+size = Vector2(400, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eakoi"]
+bg_color = Color(0, 0, 0, 0.7176471)
+
+[node name="GameManager" type="Node2D" unique_id=647594346]
+script = ExtResource("1_frtjd")
+
+[node name="BackgroundBlack" type="Sprite2D" parent="." unique_id=919320153]
+position = Vector2(200, 200)
+texture = ExtResource("2_0rse5")
+
+[node name="BackgroundBlack2" type="Sprite2D" parent="." unique_id=1742852930]
+position = Vector2(200, 600)
+texture = ExtResource("2_0rse5")
+
+[node name="Player" parent="." unique_id=1289316115 instance=ExtResource("3_aonbx")]
+position = Vector2(200, 570)
+
+[node name="Boundary" type="Area2D" parent="." unique_id=708893456]
+position = Vector2(200, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary" unique_id=712580887]
+shape = SubResource("RectangleShape2D_smx3j")
+
+[node name="HorizontalBarYellow" type="Sprite2D" parent="Boundary" unique_id=984785531]
+position = Vector2(5.722046e-06, 0)
+scale = Vector2(3.0769231, 1)
+texture = ExtResource("4_lcbjr")
+
+[node name="Bullets" type="Node" parent="." unique_id=35798979]
+
+[node name="Enemies" type="Node" parent="." unique_id=1578915745]
+
+[node name="EnemySpawner" parent="." unique_id=710687383 instance=ExtResource("5_30v7y")]
+script = ExtResource("6_5xtl8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1274877914]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=947975253]
+offset_right = 108.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 25
+text = "Score: 00"
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer" unique_id=8278989]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eakoi")
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=1736068294]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -236.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 75
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YourScoreLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=1125223391]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -108.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 35
+text = "Your Score: 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=1272902229]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -44.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 35
+text = "Hi-Score: 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1094463896]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 20.0
+offset_right = 144.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 25
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1315846456]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 76.0
+offset_right = 144.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 25
+text = "Main Menu"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1352842105]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 132.0
+offset_right = 144.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cjvif")
+theme_override_font_sizes/font_size = 25
+text = "Exit"
+
+[node name="SfxControl" type="Node" parent="." unique_id=6102117]
+script = ExtResource("8_ry0e6")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="SfxControl" unique_id=1352877209]
+stream = ExtResource("9_pc0jn")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="SfxControl" unique_id=1835213765]
+position = Vector2(200, 570)
+stream = ExtResource("10_c7a3q")
+
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/ExitButton" to="." method="_on_exit_button_pressed"]

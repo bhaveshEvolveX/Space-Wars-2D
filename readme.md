@@ -55,9 +55,12 @@ A special thank you to the creators and open-source contributors whose assets an
 
 Art Assets: [https://hexadecimalwtf.itch.io/space-pixels?download]
 
+Fonts: [https://github.com/zedseven/Pixellari.git]
+
 Audio & Soundtrack: [Background_Music: https://pixabay.com/music/video-games-spaceship-arcade-shooter-game-background-soundtrack-318508/
 Shoot_Sound: https://pixabay.com/sound-effects/film-special-effects-gun-shot-350315/
-Explosion_Sound: https://pixabay.com/sound-effects/film-special-effects-boom-356126/]
+Explosion_Sound: https://pixabay.com/sound-effects/film-special-effects-boom-356126/
+]
 
 Tutorials/Guidance: [Godot_Game_Dev: https://youtube.com/playlist?list=PLz7mmheDeooWmbqWWxbHBim3l0cylYKhf&si=xTRWvm3ax6j456Td
 Main_menu: https://youtu.be/zHYkcJyE52g?si=DVU6Yiyt1o2MmR_k
